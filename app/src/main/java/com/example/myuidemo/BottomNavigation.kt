@@ -21,8 +21,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.*
@@ -48,8 +51,16 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .padding(15.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            val text = buildAnnotatedString {
+                withStyle(style = SpanStyle(colorResource(id = R.color.mainui))) {
+                    append("sport")
+                }
+                withStyle(style = SpanStyle(color = colorResource(id = R.color.orange))) {
+                    append("su")
+                }
+            }
             Text(
-                text = "sportsu" ,
+                text = text ,
                 fontWeight = FontWeight.Bold ,
                 color = Color.Black ,
                 fontSize = 35.sp ,
@@ -82,7 +93,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             SearchBar(
                 modifier= Modifier
                     .fillMaxWidth()
-                    .padding(start = 12.dp , end = 12.dp),
+                    .padding(start = 12.dp, end = 12.dp),
                 query = text,
                 onQueryChange ={text=it} ,
                 onSearch = {
@@ -164,7 +175,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 modifier = modifier
                     .fillMaxWidth()
                     .height(170.dp)
-                    .padding(start = 2.dp , end = 1.dp , top = 10.dp)
+                    .padding(start = 2.dp, end = 1.dp, top = 10.dp)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.frame) ,
@@ -178,7 +189,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             Column(
                 modifier = modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp , top = 20.dp) ,
+                    .padding(start = 20.dp, top = 20.dp) ,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -188,7 +199,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     fontSize = 30.sp ,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 0.dp , end = 12.dp , top = 0.dp) ,
+                        .padding(start = 0.dp, end = 12.dp, top = 0.dp) ,
                 )
             }
             val items = listOf(
@@ -201,7 +212,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             Column(
                 modifier = modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp , end = 16.dp) ,
+                    .padding(start = 16.dp, end = 16.dp) ,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 HorizontalScrollableList(items)
@@ -210,7 +221,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             Column(
                 modifier = modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp , top = 20.dp) ,
+                    .padding(start = 20.dp, top = 20.dp) ,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -220,7 +231,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     fontSize = 30.sp ,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 0.dp , end = 12.dp , top = 0.dp) ,
+                        .padding(start = 0.dp, end = 12.dp, top = 0.dp) ,
                 )
             }
             val itemsTrend = listOf(
@@ -273,7 +284,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             Column(
                 modifier = modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp , top = 10.dp,end=16.dp) ,
+                    .padding(start = 16.dp, top = 10.dp, end = 16.dp) ,
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -309,7 +320,7 @@ fun ListItemView(modifier: Modifier=Modifier,item:ListItem) {
                     contentDescription = null , // We're providing our own content description
                     modifier = modifier
                         .size(120.dp) // Set the size of the image
-                        .padding( top = 12.dp)
+                        .padding(top = 12.dp)
                         .width(70.dp)
                         .height(90.dp) // Add some padding
                 )
@@ -317,7 +328,7 @@ fun ListItemView(modifier: Modifier=Modifier,item:ListItem) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = modifier
-                    .padding( top = 12.dp)
+                    .padding(top = 12.dp)
                     .align(Alignment.Center),
             ){
                 Image(
@@ -333,7 +344,9 @@ fun ListItemView(modifier: Modifier=Modifier,item:ListItem) {
         }
         Text(
             text = item.text,
-            modifier = Modifier.padding( top =5.dp).align(Alignment.CenterHorizontally) ,
+            modifier = Modifier
+                .padding(top = 5.dp)
+                .align(Alignment.CenterHorizontally) ,
             fontSize = 18.sp,
             maxLines = 2 // Limit text to two lines
         )
@@ -430,7 +443,7 @@ fun TrendingText(message1: String, message2: String,message3: String, modifier: 
             text = message3,
             fontSize=18.sp,
             modifier = modifier
-                .padding(top = 10.dp , bottom = 18.dp)
+                .padding(top = 10.dp, bottom = 18.dp)
                 .width(47.dp)
                 .height(21.dp),
             color = colorResource(id = R.color.orange),

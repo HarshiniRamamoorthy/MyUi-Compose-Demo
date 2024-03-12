@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FF8848</color>
+    <color name="mainui">#002534</color>
 </resources>
