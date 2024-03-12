@@ -35,7 +35,7 @@ import kotlinx.coroutines.*
 //bottomNavContentScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun PurchaseScreen(modifier: Modifier = Modifier) {
     var scrollableState = rememberScrollState()
 
     Column(
@@ -481,7 +481,7 @@ fun HorizontalScrollableList1(modifier: Modifier=Modifier,item: List<ListItem1>)
 
 
 @Composable
-fun NetworkScreen() {
+fun VectorScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -489,7 +489,7 @@ fun NetworkScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "My Network Screen" ,
+            text = "Vector Screen" ,
             fontWeight = FontWeight.Bold ,
             color = Color.White ,
             modifier = Modifier.align(Alignment.CenterHorizontally) ,
@@ -500,7 +500,7 @@ fun NetworkScreen() {
 }
 
 @Composable
-fun AddPostScreen() {
+fun GroupScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -508,7 +508,7 @@ fun AddPostScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Add Post Screen" ,
+            text = "Add Group Screen" ,
             fontWeight = FontWeight.Bold ,
             color = Color.White ,
             modifier = Modifier.align(Alignment.CenterHorizontally) ,
@@ -520,7 +520,7 @@ fun AddPostScreen() {
 
 
 @Composable
-fun NotificationScreen() {
+fun ProfileScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -528,7 +528,7 @@ fun NotificationScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Notification Screen" ,
+            text = "Profile Screen" ,
             fontWeight = FontWeight.Bold ,
             color = Color.White ,
             modifier = Modifier.align(Alignment.CenterHorizontally) ,

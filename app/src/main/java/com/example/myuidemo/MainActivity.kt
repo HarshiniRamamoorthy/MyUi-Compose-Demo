@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -60,18 +59,18 @@ fun MainScreenView(){
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
-        composable(BottomNavItem.Home.screen_route) {
-            HomeScreen()
+    NavHost(navController, startDestination = BottomNavItem.Purchase.screen_route) {
+        composable(BottomNavItem.Purchase.screen_route) {
+            PurchaseScreen()
         }
-        composable(BottomNavItem.MyNetwork.screen_route) {
-            NetworkScreen()
+        composable(BottomNavItem.Vector.screen_route) {
+            VectorScreen()
         }
-        composable(BottomNavItem.AddPost.screen_route) {
-            AddPostScreen()
+        composable(BottomNavItem.Group.screen_route) {
+            GroupScreen()
         }
-        composable(BottomNavItem.Notification.screen_route) {
-            NotificationScreen()
+        composable(BottomNavItem.Profile.screen_route) {
+            ProfileScreen()
         }
 
     }
@@ -80,10 +79,10 @@ fun NavigationGraph(navController: NavHostController) {
 @Composable
 fun BottomNavigation(navController: NavController) {
     val items = listOf(
-        BottomNavItem.Home,
-        BottomNavItem.MyNetwork,
-        BottomNavItem.AddPost,
-        BottomNavItem.Notification,
+        BottomNavItem.Purchase,
+        BottomNavItem.Vector,
+        BottomNavItem.Group,
+        BottomNavItem.Profile,
 
     )
     BottomNavigation(backgroundColor = Color(0xFFFFFFFF), modifier = Modifier.height(80.dp).padding(1.dp)) {
