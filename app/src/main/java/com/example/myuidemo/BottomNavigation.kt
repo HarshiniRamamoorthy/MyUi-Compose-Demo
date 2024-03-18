@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import kotlinx.coroutines.*
 
 
@@ -35,7 +36,7 @@ import kotlinx.coroutines.*
 //bottomNavContentScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PurchaseScreen(modifier: Modifier = Modifier) {
+fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
     var scrollableState = rememberScrollState()
 
     Column(
@@ -240,8 +241,8 @@ fun PurchaseScreen(modifier: Modifier = Modifier) {
                     painterResource(id = R.drawable.stroke_1),
                     painterResource(id = R.drawable.stroke_3),
                     painterResource(id = R.drawable.trend_img),
-                    "mens running shoes" ,
-                    "Nike Air Zoom-24" ,
+                    stringResource(R.string.mens_running_shoes) ,
+                    stringResource(id = R.string.nike_air_zoom) ,
                     "$ 138"
                 ) ,
                 ListItem1(
@@ -249,8 +250,8 @@ fun PurchaseScreen(modifier: Modifier = Modifier) {
                     painterResource(id = R.drawable.stroke_1),
                     painterResource(id = R.drawable.stroke_3),
                     painterResource(id = R.drawable.trend_img),
-                    "Adidas sport Jack" ,
-                    "Nike Air Zoom-24" ,
+                    stringResource(R.string.mens_running_shoes) ,
+                    stringResource(id = R.string.nike_air_zoom),
                     "$ 138"
                 ) ,
                 ListItem1(
@@ -258,8 +259,8 @@ fun PurchaseScreen(modifier: Modifier = Modifier) {
                     painterResource(id = R.drawable.stroke_1),
                     painterResource(id = R.drawable.stroke_3),
                     painterResource(id = R.drawable.trend_img),
-                    "mens running shoes" ,
-                    "Nike Air Zoom-24" ,
+                    stringResource(R.string.mens_running_shoes) ,
+                    stringResource(id = R.string.nike_air_zoom) ,
                     "$ 138"
                 ) ,
                 ListItem1(
@@ -267,8 +268,8 @@ fun PurchaseScreen(modifier: Modifier = Modifier) {
                     painterResource(id = R.drawable.stroke_1),
                     painterResource(id = R.drawable.stroke_3),
                     painterResource(id = R.drawable.trend_img),
-                    "mens running shoes" ,
-                    "Nike Air Zoom-24" ,
+                    stringResource(R.string.mens_running_shoes) ,
+                    stringResource(id = R.string.nike_air_zoom) ,
                     "$ 138"
                 ) ,
                 ListItem1(
@@ -276,8 +277,8 @@ fun PurchaseScreen(modifier: Modifier = Modifier) {
                     painterResource(id = R.drawable.stroke_1),
                     painterResource(id = R.drawable.stroke_3),
                     painterResource(id = R.drawable.trend_img),
-                    "mens running shoes" ,
-                    "Nike Air Zoom-24" ,
+                    stringResource(R.string.mens_running_shoes),
+                    stringResource(id = R.string.nike_air_zoom) ,
                     "$ 138"
                 )
             )
@@ -289,7 +290,15 @@ fun PurchaseScreen(modifier: Modifier = Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                HorizontalScrollableList1(item = itemsTrend)
+                HorizontalScrollableList1( item = itemsTrend,navController=navController)
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = modifier.height(100.dp)
+            ) {
+
             }
 
         }
@@ -357,9 +366,11 @@ fun ListItemView(modifier: Modifier=Modifier,item:ListItem) {
 //trends
 // Custom composable representing an item in the list
 @Composable
-fun ListItemView1(modifier: Modifier=Modifier,item: ListItem1) {
+fun ListItemView1(modifier: Modifier=Modifier,item: ListItem1,navController: NavController) {
 
-    Box(modifier=modifier) {
+    Box(
+        modifier=modifier.clickable {navController.navigate("detailedScreen") } // Use Clickable modifier with onClick lambda
+    ) {
         Image(
             painter = item.image1,
             contentDescription = null,
@@ -469,12 +480,15 @@ fun HorizontalScrollableList(item: List<ListItem>) {
 
 //trends
 @Composable
-fun HorizontalScrollableList1(modifier: Modifier=Modifier,item: List<ListItem1>) {
+fun HorizontalScrollableList1(item: List<ListItem1>,navController: NavController) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(20.dp),
     ) {
         items(item) { item ->
-            ListItemView1(item = item)
+            ListItemView1(
+                item = item,
+              navController = navController
+            )
         }
     }
 }
@@ -538,25 +552,6 @@ fun ProfileScreen() {
     }
 }
 
-
-@Composable
-fun DetailedPage() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.teal_700))
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Jobs Screen" ,
-            fontWeight = FontWeight.Bold ,
-            color = Color.White ,
-            modifier = Modifier.align(Alignment.CenterHorizontally) ,
-            textAlign = TextAlign.Center ,
-            fontSize = 20.sp
-        )
-    }
-}
 
 //@Preview(
 //    showBackground = true ,
