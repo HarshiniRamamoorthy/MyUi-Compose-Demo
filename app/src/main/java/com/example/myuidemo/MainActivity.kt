@@ -77,8 +77,6 @@ fun NavigationGraph(navController: NavHostController) {
         composable("detailedScreen") {
             PurchaseDetailedPage(navController = navController)
         }
-
-
     }
 }
 
