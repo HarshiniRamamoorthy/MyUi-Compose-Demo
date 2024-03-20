@@ -36,7 +36,7 @@ import kotlinx.coroutines.*
 //bottomNavContentScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
+fun PurchaseScreen(navController: NavController,modifier: Modifier = Modifier) {
     var scrollableState = rememberScrollState()
 
     Column(
@@ -67,7 +67,7 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                 fontSize = 35.sp ,
             )
 
-            Box (modifier=modifier.width(46.dp)){
+            Box (modifier=Modifier.width(46.dp)){
 
                 Image(
                     painter = painterResource(id = R.drawable.navicon) ,
@@ -85,14 +85,18 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                 )
             }
         }
+
+        //search bar
+
         var text by remember { mutableStateOf("") } // Query for SearchBar
         var active by remember { mutableStateOf(false) } // Active state for SearchBar
+
 //For adding search history, create a variable searchHistory of type mutableStateListOf.
         var searchHistory = remember { mutableStateListOf("") }
 
-        Column(modifier = Modifier.fillMaxWidth()) {
+        Column(modifier = modifier.fillMaxWidth()) {
             SearchBar(
-                modifier= Modifier
+                modifier= modifier
                     .fillMaxWidth()
                     .padding(start = 12.dp, end = 12.dp),
                 query = text,
@@ -120,7 +124,7 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                 trailingIcon = {
                     if(active){
                         Icon(
-                            modifier=Modifier.clickable {
+                            modifier=modifier.clickable {
                                 if(text.isNotEmpty()){
                                     text=""
                                 }else{
@@ -140,9 +144,9 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                 searchHistory.forEach {
                     if (it.isNotEmpty()) {
                         Column {
-                            Row(modifier = Modifier.padding(all = 14.dp)) {
+                            Row(modifier = modifier.padding(all = 14.dp)) {
                                 Icon(
-                                    modifier = Modifier.padding(end = 10.dp),
+                                    modifier = modifier.padding(end = 10.dp),
                                     imageVector = Icons.Default.History,
                                     contentDescription = null
                                 )
@@ -154,7 +158,7 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                         }
 
                         Text(
-                            modifier = Modifier
+                            modifier = modifier
                                 .padding(all = 14.dp)
                                 .fillMaxWidth()
                                 .clickable {
@@ -181,7 +185,7 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                 Image(
                     painter = painterResource(id = R.drawable.frame) ,
                     contentDescription = null , // We're providing our own content description
-                    modifier = Modifier
+                    modifier = modifier
                         .size(400.dp)// Set the size of the image
                         .padding(4.dp) ,// Add some padding
                     contentScale = ContentScale.FillBounds
@@ -198,7 +202,7 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                     fontWeight = FontWeight.Bold ,
                     color = Color.Black ,
                     fontSize = 30.sp ,
-                    modifier = Modifier
+                    modifier = modifier
                         .fillMaxWidth()
                         .padding(start = 0.dp, end = 12.dp, top = 0.dp) ,
                 )
@@ -230,7 +234,7 @@ fun PurchaseScreen(modifier: Modifier = Modifier,navController: NavController) {
                     fontWeight = FontWeight.Bold ,
                     color = Color.Black ,
                     fontSize = 30.sp ,
-                    modifier = Modifier
+                    modifier = modifier
                         .fillMaxWidth()
                         .padding(start = 0.dp, end = 12.dp, top = 0.dp) ,
                 )
@@ -353,7 +357,7 @@ fun ListItemView(modifier: Modifier=Modifier,item:ListItem) {
         }
         Text(
             text = item.text,
-            modifier = Modifier
+            modifier = modifier
                 .padding(top = 5.dp)
                 .align(Alignment.CenterHorizontally) ,
             fontSize = 18.sp,
